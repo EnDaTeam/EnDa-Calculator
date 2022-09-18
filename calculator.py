@@ -82,6 +82,21 @@ while True:
                         elif operation == "3":
                             saveHistory(multiply(first,second))
                         elif operation == "4":
+                            if float(second) == 0.0 or second == 0:
+                                x = f"{first} / {second} is not defined!"
+                                saveHistory(x)
+                                print(x)
+                                space()
+                                print(Fore.RED + "Do you want to do another calculation?")
+                                calculation = input("(Y)es or (N)o : ")
+                                space()
+                                if str(calculation).lower() in ("y","yes","(y)es","(y)"):
+                                    pass
+                                else:
+                                    print(Fore.BLUE + "Roger, thank you for using EnDa Calculator!" + Fore.RESET)
+                                    time.sleep(2)
+                                    exit()
+                                continue
                             if first % second == 0:
                                 saveHistory(divide(first,second))
                             else:
