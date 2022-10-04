@@ -1,0 +1,60 @@
+MSDOS 2.00 Function Library for Lattice C
+
+subttl -
+;;
+;;FUNCTION:	Sets and returns switch char-
+;;	acter and device availability.
+;;
+;;
+;;CALL:
+;;
+;;	ret= _charop(al,dl)
+;;	int ret;	DL return value, 
+;;	int al;		charoper function
+;;	int dl;		charoper data
+;;
+;;RETURN:
+;;	See the DOS docs for details. 
+;;_charop(0,0) returns the ASCII switch char,
+;;_charop(1,'-') sets the switch to -,
+;;_charop(2,0) returns device availability,
+;;_charop(3,i) sets device availability.
+;;
+;;
+;;DESCRIPTION:
+;;
+;;EXAMPLE:
+;;
+;;
+;;CAUTIONS:
+;;
+;;
+;;ASSUMPTIONS:
+;;
+;;LONG	32 bits (4 bytes)
+;;INT	16 bits (2 bytes)
+;;CHAR	 8 bits (1 byte)
+;;
+page
+pgroup group prog
+prog segment byte public 'prog'
+assume cs:pgroup,ds:pgroup
+
+public 	_charop
+
+_charop proc near
+	push	bp
+	mov	bp,sp
+	mov	al,[bp+4]
+	mov	dl,[bp+6]
+	mov	ah,55
+	int	33
+	mov	al,dl
+	mov	ah,0
+	pop	bp
+	ret
+_charop endp
+
+prog ends
+
+	end
