@@ -4,3 +4,4 @@ datetime==4.7
 math
 random
 os
+setuptools>=65.5.1 # not directly required, pinned by Snyk to avoid a vulnerability
